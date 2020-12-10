@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Dashboard</title>
+        <style>
+            /* ------------------------------------------------------------------------------------------------------ */
+            
+
+            /* ------------------------------------------------------------------------------------------------------ */
+            .flex-container {
+                display: flex;
+                flex-direction: row;
+            }
+
+            body {
+                background-image: url('https://image.freepik.com/free-vector/blue-white-low-poly-triangle-shapes-background_1035-19007.jpg');
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                background-size: cover;
+                }
+            /* ----------------------------------------------------------------------------------------------- */
+            .title {
+            color: grey;
+            font-size: 18px;
+            }
+
+            button {
+            border: 1px;
+            outline: 0;
+            padding: 8px;
+            color: rgb(17, 16, 16);
+            background-color:  rgb(57, 131, 112);
+            text-align: center;
+            cursor: pointer;
+            width: 100%;
+            font-size: 18px;
+            }
+
+            a {
+            text-decoration: none;
+            font-size: 22px;
+            color:white;
+            }
+
+            button:hover a{
+            opacity: 9;
+            color: white;
+            }
+          /* ------------------------------------------------------------------------------------------ */
+            .sidenav {
+                height: 100%; 
+                width: 160px; 
+                position: fixed; 
+                z-index: 2; 
+                top: 0; 
+                left: 0;
+                background-color: rgb(57, 131, 112); 
+                overflow-x: hidden; 
+                padding-top: 2%;
+                display:flex;
+                flex-direction:row;
+                flex-wrap:wrap;
+                justify-content:center;
+            }
+            
+            .sidenav a {
+                padding: 6px 8px 6px 16px;
+                text-decoration: none;
+                font-size: 25px;
+                color: #ffffff;
+                display: block;
+            }
+        
+            .sidenav a:hover {
+                color: #000000;
+            }
+
+            /* ---------------------------------------------------------------------------------------------------------- */
+            .card {
+              box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);
+              background-color: rgb(57, 131, 112);
+              transition: 0.3s;
+              margin: 3%;
+              margin-bottom: 1%;
+              margin-top: 1%;
+              text-align: center;
+              border-radius: 2%;
+              float: left;
+              width: calc(27%);
+              height: 25%;
+            }
+            .card img {
+                height: 300px;
+                width: 200px;
+            }           
+            
+            .card:hover {
+              box-shadow: 8px 8px 16px 0 rgba(0,0,0,1);
+            }
+            /* --------------------------------------History cards----------------------------------------------- */
+            .cardb {
+              box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);
+              background-color: rgb(57, 131, 112);
+              transition: 0.3s;
+              margin-left: 15%;
+              margin-right: 5;
+              margin-bottom: 1%;
+              margin-top: 1%;
+              text-align: center;
+              border-radius: 2%;
+              float: left;
+              width: calc(27%);
+              height: 25%;
+            }
+                   
+            
+            .cardb:hover {
+              box-shadow: 8px 8px 16px 0 rgba(0,0,0,1);
+            }
+            /* ------------------------- dashboard card-------------------------- */
+            .cardd {
+              box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);
+              background-color: rgb(57, 131, 112);
+              transition: 0.3s;
+              margin: 37%;
+              margin-bottom: 1%;
+              margin-top: 1%;
+              text-align: center;
+              border-radius: 2%;
+              float: left;
+              width: calc(25%);
+              height: 20%;
+            }
+            .cardd img {
+                height: 300px;
+                width: 200px;
+            }
+            
+            .cardd:hover {
+              box-shadow: 0 8px 16px 0 rgba(0,0,0,1);
+            }
+
+            /* ----------------------------chatbot----------------------------------------- */
+            .chat {
+              box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);
+              background-color: rgb(57, 131, 112);
+              transition: 0.3s;
+              margin: 20%;
+              margin-bottom: 1%;
+              margin-top: 8%;
+              text-align: center;
+              border-radius: 2%;
+              float: left;
+              width: calc(60%);
+              height: 30%;
+            }
+            .chat img {
+                height: 650px;
+                width: 300px;
+            }
+            
+            .chat:hover {
+              box-shadow: 0 8px 16px 0 rgba(0,0,0,1);
+            }
+            /* ---------------------------------------------------------------------------- */
+
+            .container {
+              padding: 2px 16px;
+            }
+
+            .img {
+                border-radius: 1%;
+                height: 50px;
+                width: 30px;
+
+            }
+
+            #main {
+                transition: margin-left .5s;
+                margin-left: 8%;
+                padding: 20px;
+            }
+            
+            @media screen and (max-height: 450px) {
+            .sidenav {padding-top: 15px;}
+            .sidenav a {font-size: 18px;}
+            }
+
+            /* -----------------------------------POPUP-------------------------------------- */
+            .popup {
+                position: relative;
+                display: inline-block;
+                cursor: pointer;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+                }
+                .popup .popuptext {
+                visibility: hidden;
+                width: 500px;
+                background-color: #555;
+                color: #fff;
+                text-align: center;
+                border-radius: 6px;
+                position: absolute;
+                z-index: 1;
+                bottom: 125%;
+                left: 50%;
+                /* margin-left: -80px; */
+                }
+
+                /* Popup arrow */
+                .popup .popuptext::after {
+                content: "";
+                position: absolute;
+                top: 100%;
+                left: 50%;
+                margin-left: -5px;
+                border-width: 5px;
+                /* border-style: solid; */
+                /* border-color: #555 transparent transparent transparent; */
+                }
+
+                /* Toggle this class - hide and show the popup */
+                .popup .show {
+                visibility: visible;
+                -webkit-animation: fadeIn 1s;
+                animation: fadeIn 1s;
+                }
+
+                /* Add animation (fade in the popup) */
+                @-webkit-keyframes fadeIn {
+                from {opacity: 0;} 
+                to {opacity: 1;}
+                }
+
+                @keyframes fadeIn {
+                from {opacity: 0;}
+                to {opacity:1 ;}
+                }
+            /* ---------------------------------Form Card----------------------------------------- */
+            .cardf {
+              box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);
+              background-color: rgb(57, 131, 112);
+              transition: 0.3s;
+              margin: 37%;
+              margin-bottom: 1%;
+              margin-top: 15%;
+              text-align: center;
+              border-radius: 2%;
+              float: left;
+              width: calc(20%);
+              height: 30%;
+            }
+            
+            .cardf:hover {
+              box-shadow: 0 8px 16px 0 rgba(0,0,0,1);
+            }
+
+            .btn {
+            border: 1px;
+            outline: 0;
+            padding: 8px;
+            color: rgb(17, 16, 16);
+            background-color:  rgb(57, 131, 112);
+            text-align: center;
+            cursor: pointer;
+            width: 100%;
+            font-size: 18px;
+            }
+
+            .btn a {
+            text-decoration: none;
+            font-size: 22px;
+            color: white;
+            }
+
+            .btn:hover {
+            opacity: 9;
+            box-shadow: 8px 8px 16px 0 rgba(0,0,0,1);
+            color: white;
+            background-color:rgb(18, 19, 19);
+            }
+
+        </style>
+
+    </head>
+    <body>
+        <div class="sidenav">
+
+            {% if request.user.is_authenticated %}
+                <p>Hello, {{request.user.username}}</p>
+                <button class = "btn"><a href="{% url 'home' %}">Home</a></button>
+                <button><a href="{% url 'dashboard' %}">Dashboard</a></button>
+                <button><a href="{% url 'mechanic' %}">Mechanic</a></button>
+                <button><a href="{% url 'car' %}">Car</a></button>
+                <button><a href="{% url 'contact' %}">Contact</a></button>
+                <button><a href="#">LogOut</a></button>
+                
+            {% else %}
+                <button><a href="{% url 'home' %}">Home</a></button>
+                <button><a href="{% url 'dashboard' %}">Dashboard</a></button>
+                <button><a href="{% url 'mechanic' %}">Mechanic</a></button>
+                <button><a href="{% url 'car' %}">Car</a></button>
+                <button><a href="{% url 'contact' %}">Contact</a></button>
+            {% endif %}
+
+        </div>
+
+        <div id="main" class="container">
+            {% block content %}
+
+            {% endblock content %}
+        </div>
+
+        <script>
+            function myFunction() {
+              var popup = document.getElementById("myPopup");
+              popup.classList.toggle("show");
+            }
+
+            function myloc() {
+              alert("Page is loaded");
+            }
+      </script>
+    </body>
+</html>

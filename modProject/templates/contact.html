@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    {% for data in contact %}
+        {% include 'snippet/cont.html' with obj=data %}
+    {% endfor %}
+
+    <div class="chat">
+        <H1> Chat Window </H1>
+        <div class="container">
+        <H3>Now you can Chat with our chat bot.......[Work in progress]</H3>
+
+          <div class="popup" onclick="myFunction()">Chat Now
+            <span class="popuptext" id="myPopup">
+                <div>
+                    <div class="chat">
+                        <H1> Chat Window </H1>
+                        <div class="container">
+                            <H3>Now you can Chat with our chat bot.......[Work in progress]</H3>
+                        </div>
+                
+                    </div>
+                </div>
+            </span>
+          </div>
+    </div>
+   
+
+{% endblock content %}

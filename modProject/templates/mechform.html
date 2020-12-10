@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- <button onclick="getLocation()">Try It</button> -->
+
+
+<div class="cardf">
+    <h2>
+    <form method="POST" action="{% url 'mechpayment' %}" name="form">
+        <p id="demo"></p>
+        {% csrf_token %}
+            <table class="tab" >
+            <tr><td>
+            <label for="first">First name : </label><td>
+            <input type="text"  name="fname" placeholder="First name" value="{{ fname }}"></td></tr>
+            <tr><td>
+            <label for="last name">Last name : </label><td>
+            <input type="text" name="lname" placeholder="Last name" value="{{ lname }}"></td></tr>
+            <tr><td>
+            <label for="Username">Username : </label><td>
+            <input type="text" name="username" placeholder="Username" value = "{{ username }}"></td></tr>
+            <tr><td>
+            <label for="Gender">Gender : </label><td>
+            <input  type="text" name="gender" placeholder="Gender" value="{{ gender }}"></td></tr>
+            <input type="text" name="email_id" placeholder="Email" value = "{{ email_id }}" hidden>
+            <input type="text" name="mech_id" placeholder="Id" value = "{{ mech_id }}" hidden>
+            <tr><td>
+            <input type="number" name="amount" value = "{{ amount }}" hidden></td></tr>  
+            <tr><td>
+            <label for="Contact no.">Contact no : </label><td>
+            <input type="number" name="contact" placeholder="contact number" value = "{{ contact }}"></td></tr>
+            <!-- <label for="Location">Location : </label><td>
+            <input type="text" id = "demo" name="location" placeholder="Location" ></td></tr> -->
+
+        </table>
+        <input class="btn" type="submit" value="Proceed">
+    </form>
+    </h2>
+</div>
+<script>
+    var x = document.form.location.value;
+
+    function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.watchPosition(showPosition);
+    } else { 
+        x = "[1, 2]"
+    }
+    }
+        
+    function showPosition(position) {
+        x ="[" + position.coords.latitude + 
+        "," + position.coords.longitude + "]";
+    }
+</script>
+{% endblock content %}

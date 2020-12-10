@@ -1,0 +1,21 @@
+<div class="card">
+    <img src={{obj.img}} alt="Rt" style="width:100%">
+    <div class="container">
+    <h2>Car Name : {{obj.car_name}}</h2>
+    <h3>Model Name : {{obj.car_model}} <br> 
+    Car Number : {{obj.car_number}}<br>
+    Cost perday : {{obj.cost_perday}} <br> 
+    Available : {{obj.is_available}}<br>
+    Rating : {{obj.rating}}
+    </h3>
+    <form method="POST" action="{% url 'carform' %}">
+        {% csrf_token %}
+            <input type="text" name="Email_id" value = "{{ obj.email_id }}" hidden>
+            <input type="number" name="cost" value = "{{ obj.cost_perday }}" hidden>
+            <input class="btn" type="submit" value="Order">
+    </form><br>
+
+
+    <!-- <p><button><a href="{% url 'carform' %}">Order</a></button></p> -->
+    </div>
+</div>

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="cardd">
+        <img src="https://c4.wallpaperflare.com/wallpaper/144/949/201/fantasy-art-bird-vector-background-hd-wallpaper-preview.jpg" alt="Rt" style="width:100%">
+        <div class="container">
+        <h1>{{udata.name }}</h1>
+        <h3> Email Id : {{ udata.email_id }}  Username : {{ udata.username }}</h3>
+        <h3> Age : {{ udata.age }}  Gender : {{ udata.gender }} DL number : {{ udata.dLicense }}</h3>
+        </div>
+    </div>
+
+    <div class="cardb">
+        <H1>Car Service History</H1>
+        {% for data in car %}
+            {% include 'snippet/cbksnpt.html' with obj=data %}
+        {% endfor %}
+    </div>
+
+    <div class="cardb">
+        <H1>Mechanic Service History</H1>
+        {% for data in mech %}
+            {% include 'snippet/mbksnpt.html' with obj=data %}
+        {% endfor %}
+    </div>
+
+{% endblock content %}

@@ -1,0 +1,17 @@
+<div class="card">
+    <img src="https://cdn2.vectorstock.com/i/1000x1000/64/21/creative-gear-wrench-logo-design-vector-25456421.jpg" alt="Rt" style="width:100%">
+    <div class="container">
+    <h2>Name : {{ obj.g_name }}</h2>
+    <h3>Service Charge :{{ obj.service_charge }}<br>
+        Available : {{ obj.is_available }}<br>
+        Rating : {{ obj.rating }}
+    </h3>
+    <form method="POST" action="{% url 'mechform' %}">
+        {% csrf_token %}
+            <input type="text" name="Email_id" value = "{{ obj.email_id }}" hidden>
+            <input type="text" name="cost" value = "{{ obj.service_charge }}" hidden>
+            <input class="btn" type="submit" value="Order">
+    </form><br>
+    <!-- <p class="button"><button><a href="{% url 'mechform' %}">Call</a></button></p> -->
+    </div>
+</div>

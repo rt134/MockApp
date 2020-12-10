@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="cardf" >
+    <h2>
+    <form method="POST" action="{% url 'carpayment' %}" name ="form">
+        {% csrf_token %}
+            <table class="tab" >
+            <tr><td>
+            <label for="first">First name : </label><td>
+            <input type="text"  name="fname" placeholder="First name" value="{{ fname }}"></td></tr>
+            <tr><td>
+            <label for="last name">Last name : </label><td>
+            <input type="text" name="lname" placeholder="Last name" value="{{ lname }}"></td></tr>
+            <tr><td>
+            <label for="Username">Username : </label><td>
+            <input type="text" name="username" placeholder="Username" value = "{{ username }}"></td></tr>
+            <tr><td>
+            <label for="Gender">Gender : </label><td>
+            <input type="text" name="gender" placeholder="Gender" value="{{ gender }}"></td></tr>
+            <tr><td>
+            <label for="Age">Age : </label><td>
+            <input type="number" name="age" placeholder="Age" value = "{{ age }}"></td></tr>
+            <input type="text" name="email_id" value = "{{ email_id }}" hidden>
+            <input type="text" name="car_id" value = "{{ car_id }}" hidden>
+            <input type="number" name="amount" value = "{{ amount }}" hidden>
+            <tr><td>
+            <label for="Contact no.">Contact No. : </label><td>
+            <input type="number" name="contact" placeholder="contact number" value = "{{ contact }}"></td></tr>
+            <tr><td>
+            <label for="License"> License No. : </label><td>
+            <input type="text" name="dLicense" placeholder="License number" value = "{{ dLicense }}"></td></tr>
+            <tr><td>
+            <label for="day">No of days: </label><td>
+            <input type="number"  name="days" placeholder="Days" value=1 ></td></tr>
+        </table>
+        
+        <input class="btn" type="submit" value="Proceed">
+    </form>
+    </h2>
+
+</div>
+
+
+{% endblock content %}

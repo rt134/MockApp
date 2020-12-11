@@ -1,6 +1,9 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
+from django.contrib import sessions
+from django.contrib.auth.decorators import login_required
 import requests
+
 
 # URLs
 Mech_url = "http://127.0.0.1:8000/api/mechs/"
@@ -8,7 +11,6 @@ Car_url = "http://127.0.0.1:8000/api/cars/"
 User_url = "http://127.0.0.1:8000/api/users/"
 Cbook_url = "http://127.0.0.1:8000/api/cbookings/"
 Mbook_url = "http://127.0.0.1:8000/api/mbookings/"
-
 res = requests.get(Mech_url).json()
 resc = requests.get(Car_url).json()
 
@@ -28,27 +30,30 @@ L = ["https://imgd.aeplcdn.com/1056x594/n/cw/ec/20623/innova-crysta-exterior-rig
 			"https://imgd.aeplcdn.com/1056x594/n/cw/ec/19812/fortuner-exterior-right-front-three-quarter-2.jpeg?q=85"]
 # ---------------------------------------------------------------------FORM-------------------------------------------------------------------------------
 
+@login_required
 def car_form_view(request):
 	context = {}
 	if request.method == "POST":
 		cemailid = request.POST['Email_id']
 		costperday = request.POST['cost']
 	context['car_id'] = cemailid		
-	context['email_id'] = "rt134@gmail.com"
+	context['email_id'] = request.user.email
 	context['amount'] = costperday
 	return render(request, 'carform.html', context)
 
+@login_required
 def mech_form_view(request):
 	context = dict()
 	if request.method == "POST":
 		memailid = request.POST['Email_id']
 		charge = request.POST['cost']
 	context['mech_id'] = memailid
-	context['email_id'] = "rt134@gmail.com"
+	context['email_id'] = request.user.email
 	context['amount'] = charge
 	return render(request, 'mechform.html', context)
 
 # ---------------------------------------------------------------------PAYMENT---------------------------------------------------------------------------
+@login_required
 def car_payment_view(request):
 	context = {}
 	if request.method == "POST":
@@ -87,6 +92,7 @@ def car_payment_view(request):
 	resc = requests.get(Car_url).json()
 	return render(request, 'carpayment.html', context)
 
+@login_required
 def mech_payment_view(request):
 	context = {}
 	if request.method == "POST":
@@ -120,11 +126,13 @@ def mech_payment_view(request):
 	return render(request, 'mechpayment.html', context)
 
 # -----------------------------------------------------------------------PAGES-------------------------------------------------------------------------
-
+@login_required
 def home_view(request):
 	context = dict()
+	print(request.user.first_name)
 	return render(request, 'home.html', context)
 
+@login_required
 def car_view(request):
 	context = dict()
 	resc = requests.get(Car_url).json()
@@ -135,11 +143,13 @@ def car_view(request):
 	context['carlist'] = resc
 	return render(request,'car.html', context)
 
+@login_required
 def mechanic_view(request):
 	context = dict()
 	context['mechaniclist'] = res
 	return render(request,'mechanic.html', context)
 
+@login_required
 def contact_view(request):
 	context = dict()
 	context['contact'] = [{'heading':'Accounts section', 'email': 'accounts@modelapp.com', 'contact': '9918201173'},
@@ -147,11 +157,13 @@ def contact_view(request):
 						  {'heading':'Booking Related', 'email': 'bookings@modelapp.com', 'contact': '9918201175'}]
 	return render(request, 'contact.html', context)
 
+@login_required
 def dashboard_view(request):
 	context = dict()
-	context['udata'] = {'name': "Rishabh Tripath", 'age': 20, 'gender': 'M', 'dLicense': "1233456", 'email_id': "rishabh@gmail.com", 'username': "rt134"}
-	urlc = Cbook_url + "rt134@gmail.com"
-	urlm = Mbook_url + "rt134@gmail.com"
+	context['udata'] = {'name': request.user.first_name + " " + request.user.last_name, 
+						'email_id': request.user.email, 'username': request.user.username}
+	urlc = Cbook_url + request.user.email
+	urlm = Mbook_url + request.user.email
 	context['car'] = requests.get(urlc).json()
 	context['mech'] = requests.get(urlm).json()
 	return render(request,'dashboard.html', context)

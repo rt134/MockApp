@@ -16,7 +16,6 @@ def signup_view(request):
             username=username, first_name=first_name, last_name=last_name, email=email, password=password1)
         user.save()
         login(request, user)
-        print('user created')
         return redirect('home')
     else:
         return render(request, 'signup.html', context)

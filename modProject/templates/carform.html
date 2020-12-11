@@ -9,13 +9,13 @@
             <table class="tab" >
             <tr><td>
             <label for="first">First name : </label><td>
-            <input type="text"  name="fname" placeholder="First name" value="{{ fname }}"></td></tr>
+            <input type="text"  name="fname" placeholder="First name" value="{{ request.user.first_name }}"></td></tr>
             <tr><td>
             <label for="last name">Last name : </label><td>
-            <input type="text" name="lname" placeholder="Last name" value="{{ lname }}"></td></tr>
+            <input type="text" name="lname" placeholder="Last name" value="{{ request.user.last_name }}"></td></tr>
             <tr><td>
             <label for="Username">Username : </label><td>
-            <input type="text" name="username" placeholder="Username" value = "{{ username }}"></td></tr>
+            <input type="text" name="username" placeholder="Username" value = "{{ request.user.username }}"></td></tr>
             <tr><td>
             <label for="Gender">Gender : </label><td>
             <input type="text" name="gender" placeholder="Gender" value="{{ gender }}"></td></tr>

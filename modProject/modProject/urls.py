@@ -17,14 +17,15 @@ from django.contrib import admin
 from django.urls import path,include
 from app.views import dashboard_view, car_view, mechanic_view, home_view, contact_view
 from app.views import car_form_view, mech_form_view,car_payment_view, mech_payment_view
-from accounts.views import signup_view,login_view
+from accounts.views import signup_view,login_view, logout_view
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('dashboard/',dashboard_view, name="dashboard"),
-    path('',signup_view, name="signup"),
-    path('login/',login_view, name="login"),
+    path('signup/',signup_view, name="signup"),
+    path('',login_view, name="login"),
+    path('logout/',logout_view, name="logout"),
     path('home/',home_view, name="home"),
     path('car/',car_view, name="car"),
     path('car/cbooking/',car_form_view, name="carform"),

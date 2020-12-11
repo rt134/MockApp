@@ -290,13 +290,12 @@
         <div class="sidenav">
 
             {% if request.user.is_authenticated %}
-                <p>Hello, {{request.user.username}}</p>
-                <button class = "btn"><a href="{% url 'home' %}">Home</a></button>
+                <button><a href="{% url 'home' %}">Home</a></button>
                 <button><a href="{% url 'dashboard' %}">Dashboard</a></button>
                 <button><a href="{% url 'mechanic' %}">Mechanic</a></button>
                 <button><a href="{% url 'car' %}">Car</a></button>
                 <button><a href="{% url 'contact' %}">Contact</a></button>
-                <button><a href="#">LogOut</a></button>
+                <button><a href="{% url 'logout' %}">LogOut</a></button>
                 
             {% else %}
                 <button><a href="{% url 'home' %}">Home</a></button>

@@ -117,6 +117,9 @@
         body {
             background: #FFF;
             font-family: Arial, Helvetica, sans-serif;
+            /* background-image: url('{% static "img/backgroundHQ.jpg"%}'); */
+            background: url('./static/img/backgroundHQ.jpg');
+
         }
 
         /* styling our header */
@@ -300,7 +303,7 @@
 
 <body>
 
-    
+
     <div class="hero">
         <!-- content for the hero -->
         <div class="hero-content">
@@ -366,7 +369,7 @@
             </div>
 
             <div class="feature-box">
-                <img src="{% static 'img/like.png' %}">
+                <img src="{% static '/img/like.png' %}">
                 <h5>Easy to Use</h5>
                 <p>Just think of how easy this is to use!</p>
             </div>

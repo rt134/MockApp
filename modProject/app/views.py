@@ -11,7 +11,7 @@ Car_url = "http://127.0.0.1:8000/api/cars/"
 User_url = "http://127.0.0.1:8000/api/users/"
 Cbook_url = "http://127.0.0.1:8000/api/cbookings/"
 Mbook_url = "http://127.0.0.1:8000/api/mbookings/"
-# res = requests.get(Mech_url).json()
+res = requests.get(Mech_url).json()
 resc = requests.get(Car_url).json()
 
 # ---------------------------------------------------------------------FORM-------------------------------------------------------------------------------
